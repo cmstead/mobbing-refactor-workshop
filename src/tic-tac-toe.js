@@ -106,8 +106,10 @@ class TTT {
                 .map(pstn => this.b.nibbler(...pstn))
                 .filter(x => {
                     marginal = !marginal ? x : marginal;
-                    return x !== ' ' && x === marginal;
-                }).length === 3;
+                    return x !== ' ';
+                })
+                .filter(x => x === marginal)
+                .length === 3;
 
             if (notMarginal) break;
         }

@@ -1,5 +1,9 @@
 class B {
     constructor(area) {
+        this.init(area);
+    }
+
+    init (area) {
         this.g = [];
 
         let k = area;
@@ -43,7 +47,6 @@ class TTT {
         const m = Math.pow(9 * dim, 1 / 3);
 
         this.b = new B(m);
-
 
         this.rs = ['top', pirate, 'bottom'];
         this.theSystem = [];

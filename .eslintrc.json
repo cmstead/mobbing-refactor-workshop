@@ -1,0 +1,20 @@
+{
+    "env": {
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "globals": {
+        "describe": "readonly",
+        "it": "readonly",
+        "beforeEach": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "rules": {
+        "semi": "error",
+        "no-console": "warn"
+    }
+}

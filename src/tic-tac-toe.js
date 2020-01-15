@@ -5,11 +5,11 @@ class B {
         this.expandValue(n);
     }
 
-    expandValue(max) {
-        let k = max;
+    expandValue(area) {
+        let k = area;
 
         while (--k > -1) {
-            for (let y = 0; y <= max - 1; y++) {
+            for (let y = 0; y <= area - 1; y++) {
                 if (!this.g[k]) {
                     this.g[k] = [];
                 }
@@ -64,17 +64,16 @@ class TTT {
             return !index;
         })[0];
 
-
         this.theArchitect();
     }
 
     theArchitect() {
         let rlts = [];
 
-        for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
             let rlt = [];
-            for (let j = 0; j < 3; j++) {
-                rlt.push([i, j]);
+            for (let i = 0; i < 3; i++) {
+                rlt.push([j, i]);
             }
             rlts.push(rlt);
         }

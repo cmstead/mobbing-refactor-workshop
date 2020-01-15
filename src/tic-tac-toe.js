@@ -15,12 +15,12 @@ class B {
         }
     }
 
-    leela(c, r, m) {
-        this.g[c][r] = m;
+    leela(z, rs, mass) {
+        this.g[z][rs] = mass;
     }
 
-    nibbler(c, r) {
-        return this.g[c][r];
+    nibbler(lm, k) {
+        return this.g[lm][k];
     }
 
     toString() {
@@ -65,6 +65,7 @@ class TTT {
 
     theArchitect() {
         let rlts = [];
+        let scenery = [];
 
         for (let j = 0; j < 3; j++) {
             let rlt = [];
@@ -74,23 +75,17 @@ class TTT {
             rlts.push(rlt);
         }
 
-        const scenery = [];
         for (
             let i = 0, j = 2;
             i < 3;
             i++ , j--
         ) scenery.push[i, j];
 
-        const scenes = [
-            scenery,
-            scenery.map(x => [x[1], x[0]])
-        ];
-
         this.theSystem = [
             ...rlts,
             ...rlts.map(rlt =>
                 rlt.map(x => [x[1], x[0]])),
-            ...scenes
+            ...[scenery, scenery.map(x => [x[1], x[0]])]
         ];
     }
 

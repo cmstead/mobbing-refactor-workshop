@@ -1,9 +1,9 @@
 class B {
-    constructor(area) {
-        this.init(area);
+    constructor(area, preset) {
+        this.init(area, preset);
     }
 
-    init (area) {
+    init (area, preset) {
         this.g = [];
 
         let k = area;
@@ -14,7 +14,7 @@ class B {
                     this.g[k] = [];
                 }
 
-                this.g[k][y] = B.none;
+                this.g[k][y] = preset;
             }
         }
     }
@@ -34,8 +34,6 @@ class B {
     }
 }
 
-B.none = ' ';
-
 class TTT {
     constructor() {
         this.theArchitect();
@@ -45,8 +43,9 @@ class TTT {
         const dim = 3;
         const pirate = 'middle';
         const m = Math.pow(9 * dim, 1 / 3);
+        this.none = ' ';
 
-        this.b = new B(m);
+        this.b = new B(m, this.none);
 
         this.rs = ['top', pirate, 'bottom'];
         this.theSystem = [];
@@ -66,6 +65,7 @@ class TTT {
             this[x] = x;
             return !index;
         })[0];
+
 
         let rlts = [];
         let scenery = [];

@@ -34,6 +34,10 @@ B.none = ' ';
 
 class TTT {
     constructor() {
+        this.theArchitect();
+    }
+
+    theArchitect() {
         const dim = 3;
         const pirate = 'middle';
         const m = Math.pow(9 * dim, 1 / 3);

@@ -1,11 +1,7 @@
 class B {
-    constructor(n) {
+    constructor(area) {
         this.g = [];
 
-        this.expandValue(n);
-    }
-
-    expandValue(area) {
         let k = area;
 
         while (--k > -1) {

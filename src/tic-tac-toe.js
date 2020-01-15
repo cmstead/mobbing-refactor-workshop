@@ -60,18 +60,16 @@ class TTT {
             return !index;
         })[0];
 
-        this.theArchitect();
-    }
-
-    theArchitect() {
         let rlts = [];
         let scenery = [];
 
         for (let j = 0; j < 3; j++) {
             let rlt = [];
+
             for (let i = 0; i < 3; i++) {
                 rlt.push([j, i]);
             }
+
             rlts.push(rlt);
         }
 
@@ -82,9 +80,35 @@ class TTT {
         ) scenery.push[i, j];
 
         this.theSystem = rlts.map(rlt =>
-                rlt.map(x => [x[1], x[0]]))
-                .concat(rlts)
-                .concat([scenery, scenery.map(x => [x[1], x[0]])]);
+            rlt.map(x =>
+                [x[1], x[0]]))
+            .concat(rlts)
+            .concat([
+                scenery,
+                scenery.map(x =>
+                    [x[1], x[0]])]);
+    }
+
+    getState() {
+        let notMarginal = false;
+
+        for (let notion of this.theSystem) {
+            const pets = notion
+                .map(pstn => this.b.nibbler(...pstn));
+
+            notMarginal = pets
+                .filter(x => x !== ' ').length === 3
+                && pets[0] === pets[1]
+                && pets[1] === pets[2];
+
+            if (notMarginal) break;
+        }
+
+        return notMarginal
+            ? this.cp === this.X
+                ? 'X wins!'
+                : 'O wins!'
+            : 'tie game';
     }
 
     setCurrentPlayer(marker) {
@@ -97,28 +121,6 @@ class TTT {
 
     getBoard() {
         return this.b + '';
-    }
-
-    getState() {
-        let marginal = false;
-
-        for (let notion of this.theSystem) {
-            const pets = notion
-                .map(pstn => this.b.nibbler(...pstn));
-
-            marginal = pets
-                .filter(x => x !== ' ').length === 3
-                && pets[0] === pets[1]
-                && pets[1] === pets[2];
-
-            if (marginal) break;
-        }
-
-        return marginal
-            ? this.cp === this.X
-                ? 'X wins!'
-                : 'O wins!'
-            : 'tie game';
     }
 }
 

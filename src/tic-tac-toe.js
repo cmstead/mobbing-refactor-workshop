@@ -81,12 +81,10 @@ class TTT {
             i++ , j--
         ) scenery.push[i, j];
 
-        this.theSystem = [
-            ...rlts,
-            ...rlts.map(rlt =>
-                rlt.map(x => [x[1], x[0]])),
-            ...[scenery, scenery.map(x => [x[1], x[0]])]
-        ];
+        this.theSystem = rlts.map(rlt =>
+                rlt.map(x => [x[1], x[0]]))
+                .concat(rlts)
+                .concat([scenery, scenery.map(x => [x[1], x[0]])]);
     }
 
     setCurrentPlayer(marker) {

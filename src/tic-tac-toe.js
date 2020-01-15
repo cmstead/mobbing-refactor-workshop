@@ -3,7 +3,7 @@ class B {
         this.init(area, preset);
     }
 
-    init (area, preset) {
+    init(area, preset) {
         this.g = [];
 
         let k = area;
@@ -100,13 +100,14 @@ class TTT {
         let notMarginal = false;
 
         for (let notion of this.theSystem) {
-            const pets = notion
-                .map(pstn => this.b.nibbler(...pstn));
+            let marginal;
 
-            notMarginal = pets
-                .filter(x => x !== ' ').length === 3
-                && pets[0] === pets[1]
-                && pets[1] === pets[2];
+            notMarginal = notion
+                .map(pstn => this.b.nibbler(...pstn))
+                .filter(x => {
+                    marginal = !marginal ? x : marginal;
+                    return x !== ' ' && x === marginal;
+                }).length === 3;
 
             if (notMarginal) break;
         }
